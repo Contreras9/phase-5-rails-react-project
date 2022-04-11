@@ -1,3 +1,8 @@
+require "cgi"
+require "json"
+require "httparty"
+
+
 params = {
    "pagination" => {},
    "usersSearchTerm" => "Houston",
@@ -27,3 +32,4 @@ houses.each { |house|
       puts house["zpid"] + " for " +  house["price"]
 
 }
+    

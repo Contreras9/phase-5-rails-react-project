@@ -1,0 +1,3 @@
+class InquiriesController < ApplicationController
+  
+end
