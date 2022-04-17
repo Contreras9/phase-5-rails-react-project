@@ -1,0 +1,5 @@
+https://www.zillow.com/search/GetSearchPageState.htm?
+searchQueryState=%7B%22pagination%22%3A%7B%7D%2C%22usersSearchTerm%22%3A%2277494%22%2C%22mapBounds%22%3A%7B%22west%22%3A-96.04132331103514%2C%22east%22%3A-95.63963568896483%2C%22south%22%3A29.697633970555042%2C%22north%22%3A29.783188919799006%7D%2C%22mapZoom%22%3A12%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A91982%2C%22regionType%22%3A7%7D%5D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22isAllHomes%22%3A%7B%22value%22%3Atrue%7D%2C%22sortSelection%22%3A%7B%22value%22%3A%22globalrelevanceex%22%7D%7D%2C%22isListVisible%22%3Atrue%7D
+&wants={%22cat1%22:[%22mapResults%22]}&requestId=2
+
+

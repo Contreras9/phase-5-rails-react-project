@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
   def loggedIn_account
-    account.find_by(email:session[:email])
+    Account.find_by(id:session[:id])
   end
 
   def authorized_account
@@ -21,6 +21,5 @@ class ApplicationController < ActionController::API
   def render_not_found(error)
     render json: {error: "#{error.model} not found"}, status: :not_found
   end
-end
 
 end

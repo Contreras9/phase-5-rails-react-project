@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
    
    const [firstName, setFirstName] = useState('')
    const [lastName, setlastName] = useState('')
    const [password, setPassword] = useState('')
-   const [email, setAge] = useState('')
-   const [country, setCountry] = useState('')
+   const [email, setEmail] = useState('')
 
    const [error, setError] = useState(null)
 
@@ -16,13 +15,13 @@ function Signup() {
    function onClick(e) {
        e.preventDefault()
        const user = {
-           name: name,
+           first_name: firstName,
+           last_name: lastName,
+           email: email,
            password: password,
-           age: age,
-           country: country
        }
 
-       fetch('http://localhost:4000/coders', {
+       fetch('http://localhost:4001/accounts', {
            method: 'POST',
            headers: {'Content-Type': 'application/json'},
            body: JSON.stringify(user)
@@ -43,25 +42,47 @@ function Signup() {
 
 
    return(
-      <form class="form-auth text-center">
-         <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
-         <h1 class="h3 mb-3 font-weight-normal">Please Sign Up</h1>
-         <label for="inputfirstName" class="sr-only">Email address</label>
-         <input type={firstName} id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" />
-         <label for="inputLastName" class="sr-only">Email address</label>
-         <input type={lastName} id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" />
-         <label for="inputEmail" class="sr-only">Email address</label>
-         <input type={email} id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" />
-         <label for="inputPassword" class="sr-only">Password</label>
-         <input type={password} id="inputPassword" class="form-control" placeholder="Password" required="" />
-         <div class="checkbox mb-3">
-            <label>
-               <input type="checkbox" value="remember-me"/> Remember me
-            </label>
-         </div>
-         <button class="btn btn-lg btn-primary btn-block" type="submit" onClick={onClick}>Sign in</button>
-         <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
-      </form>
+      <section id="aa-signin">
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="aa-signin-area">
+            <div className="aa-signin-form">
+              <div className="aa-signin-form-title">
+                <a className="aa-property-home" href="index.html">Property Home</a>
+                <h4>Create your account and Stay with us</h4>
+              </div>
+              <form className="contactform">                                                 
+                <div className="aa-single-field">
+                  <label for="name">Name <span className="required">*</span></label>
+                  <input type="text" value={firstName} onChange={e => setFirstName(e.target.value) }required="required" aria-required="true" name="name" />
+                </div>
+                <div className="aa-single-field">
+                  <label for="name">Last Name <span className="required">*</span></label>
+                  <input type="text" value={lastName} onChange={e => setlastName(e.target.value) } required="required" aria-required="true" name="name" />
+                </div>
+                <div className="aa-single-field">
+                  <label for="email">Email <span className="required">*</span></label>
+                  <input type="email" value={email} onChange={e => setEmail(e.target.value) } required="required" aria-required="true" name="email" />
+                </div>
+                <div className="aa-single-field">
+                  <label for="password">Password <span className="required">*</span></label>
+                  <input type="password" value={password} onChange={e => setPassword(e.target.value) } name="password" /> 
+                </div>
+                <div className="aa-single-field">
+                  <label for="confirm-password">Confirm Password <span className="required">*</span></label>
+                  <input type="password" name="confirm-password" /> 
+                </div>
+                <div className="aa-single-submit">
+                  <input type="submit" value="Create Account" onClick={onClick} name="submit" />                    
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
    )
 }
 

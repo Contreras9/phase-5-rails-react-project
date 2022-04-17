@@ -1,60 +1,57 @@
-import React from "react"
-import {Link} from "react-router-dom"
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 
-function Navbar( {account} ) {
+function Navbar() {
    return(
-// 		<nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-//   <a className="navbar-brand" href="#">Pillow</a>
-//   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-//     <span className="navbar-toggler-icon"></span>
-//   </button>
+	
+	<>
+	<section id="aa-menu-area">
+		<nav className="navbar navbar-default main-navbar" role="navigation">  
+			<div className="container">
+			<div className="navbar-header">
 
-//   <div className="collapse navbar-collapse" id="navbarsExampleDefault">
-//     <ul className="navbar-nav mr-auto">
-//       <li className="nav-item active">
-//         <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-//       </li>
-//       <li className="nav-item">
-//         <a className="nav-link" href="#">Latest</a>
-//       </li>
-//       <li className="nav-item dropdown">
-//         <a className="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Search</a>
-//         <div className="dropdown-menu" aria-labelledby="dropdown01">
-//           <a className="dropdown-item" href="#">Action</a>
-//           <a className="dropdown-item" href="#">Another action</a>
-//           <a className="dropdown-item" href="#">Something else here</a>
-//         </div>
-//       </li>
-// 		<li className="nav-item">
-//         <a className="nav-link" href="#">News</a>
-//       </li>
-// 		<li className="nav-item">
-//         <a className="nav-link" href="#">Advertising</a>
-//       </li>
-// 		{ account ?
-// 		<li className="nav-item">
-// 		<Link className="nav-link" to="/">Logout</Link>
-//       </li>
-// 		:
-// 		<>
-// 		<li className="nav-item">
-//         <Link className="nav-link" to="/login">Login</Link>
-//       </li>
-// 		<li className="nav-item">
-// 		<Link className="nav-link" to="/login">Sign up</Link>
-// 	 	</li>
-// 	 	</>
-// 		}
-//     </ul>
-//     <form className="form-inline my-2 my-lg-0">
-//       <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
-//       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-//     </form>
-//   </div>
-// </nav>
-   )
+				<button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span className="sr-only">Toggle navigation</span>
+					<span className="icon-bar"></span>
+					<span className="icon-bar"></span>
+					<span className="icon-bar"></span>
+				</button>
+				                                              
+			
+				<a className="navbar-brand aa-logo" href="/"> Villa <span>Property</span></a>
+
+			</div>
+			<div id="navbar" className="navbar-collapse collapse">
+				<ul id="top-menu" className="nav navbar-nav navbar-right aa-main-nav">
+					<li className="active"><a href="/">HOME</a></li>
+					<li>
+						<Link to="/properties/1/">BUY</Link>
+					</li>
+					<li>
+						<Link to="/properties/2/">RENT</Link>
+					</li>
+					<li>
+						<Link to="/signup">SELL</Link>
+					</li>
+					<li className="dropdown">
+					<a className="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">BLOG <span className="caret"></span></a>
+					<ul className="dropdown-menu" role="menu">                
+						<li><a href="blog-archive.html">BLOG</a></li>
+						<li><a href="blog-single.html">BLOG DETAILS</a></li>                                            
+					</ul>
+					</li>
+					<li>
+						<Link to="/dashboard">DASHBOARD</Link>
+					</li>                                  
+				</ul>                            
+			</div>      
+			</div>          
+		</nav> 
+	</section>
+	</>
+	)
 }
 
 export default Navbar;
