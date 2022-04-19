@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
@@ -7,14 +8,15 @@ import Sidebar from './Sidebar';
 function MyPropertiesForm() {
   const [propertyType, setPropertyType] = useState(1)
   const [address, setAddress] = useState('')
-  const [price, setPrice] = useState(1)
-  const [rooms, setRooms] = useState(1)
-  const [bathrooms, setBathrooms] = useState(1)
-  const [sqft, setSqft] = useState(1)
-  const [zipcode, setZipcode] = useState(1)
-  const [city, setCity] = useState(1)
-  const [photo, setPhoto] = useState(1)
+  const [price, setPrice] = useState('')
+  const [rooms, setRooms] = useState('')
+  const [bathrooms, setBathrooms] = useState('')
+  const [sqft, setSqft] = useState('')
+  const [zipcode, setZipcode] = useState('')
+  const [city, setCity] = useState('')
+  const [photo, setPhoto] = useState('')
 
+  let navigate = useNavigate()
 
   function createMyProperty(e) {
     e.preventDefault()
@@ -37,12 +39,12 @@ function MyPropertiesForm() {
     .then(res => {
       //  setMyproperties(res)
       console.log(res)
+      navigate('/myproperty')
     })
  }
 
    return (
      <>
-     <Header />
       <Navbar />
       <section id="aa-property-header">
          <div className="container">
@@ -151,7 +153,7 @@ function MyPropertiesForm() {
         <label>
         Photo
         <br />
-        <input type="file" placeholder="Profile Photo" value={photo} onChange={(e) => setPhoto(e.target.value)} />
+        <input type="file" placeholder="Profile Photo" />
         </label>
       </form>
       </div>

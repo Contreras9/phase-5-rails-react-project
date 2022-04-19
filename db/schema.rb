@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2022_04_10_192556) do
     t.integer "sqft"
     t.string "zipcode"
     t.string "city"
+    t.decimal "lat"
+    t.decimal "lng"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_properties_on_account_id"

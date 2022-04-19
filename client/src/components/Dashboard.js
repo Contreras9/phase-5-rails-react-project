@@ -8,8 +8,7 @@ function Dashboard() {
 
    return (
       <>
-      <Header />
-      <Navbar />
+       <Navbar />
          <section id="aa-property-header">
             <div className="container">
                <div className="row">
@@ -25,7 +24,7 @@ function Dashboard() {
             </div>
          </section>
 
-         <div class="container-fluid">
+        <div class="container-fluid">
   <div class="row">
     <Sidebar />
 

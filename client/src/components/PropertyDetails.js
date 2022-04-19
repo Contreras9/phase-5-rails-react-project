@@ -1,13 +1,32 @@
-import React from 'react';
-import Header from './Header';
+import React, {useEffect, useState} from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer'
+import Map from './Map'
+import { useParams } from 'react-router-dom';
 
 function PropertyDetails() {
+
+   const [details, setDetails] = useState(null)
+   const {id} = useParams()
+
+   useEffect(() => {
+      fetch(`http://localhost:4001/details/${id}`, {
+       method:"GET",
+       headers: {
+          "Content-Type": "application/json"
+       }
+    })
+    .then(res => res.json())
+    .then(res => {
+         setDetails(res)
+         console.log(res)
+    })
+   }, [])
+
+   if (!details) return "Loading "
+
    return (
-      
       <>
-      <Header />
       <Navbar />
       
        <section id="aa-property-header">
@@ -42,31 +61,40 @@ function PropertyDetails() {
                   </div>
                   <div className="aa-properties-info">
                      <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, alias!</h2>
-                     <span className="aa-price">$65000</span>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptatibus veniam non voluptate, ipsa eius magni aliquid ratione sit, odio reprehenderit in quis repudiandae dolor.</p>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur, veritatis, ducimus in aliquam magnam voluptatibus ullam libero fugiat temporibus at, aliquid explicabo placeat eligendi, assumenda magni saepe eius consequuntur.</p>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium dicta aliquid, autem, cum, impedit nostrum, rem molestias quisquam ab iure enim totam? Itaque esse ut adipisci officiis nulla repellendus ratione dolore, iste ex doloribus tenetur eos provident quam quasi maxime.</p>
+                     <span className="aa-price">{8}</span>
+                     <div class="dp_form">
+
                      <h4>Propery Features</h4>
-                     <ul>
-                     <li>4 Bedroom</li>
-                     <li>3 Baths</li>
-                     <li>Kitchen</li>
-                     <li>Air Condition</li>
-                     <li>Belcony</li>
-                     <li>Gym</li>
-                     <li>Garden</li>
-                     <li>CCTV</li>
-                     <li>Children Play Ground</li>
-                     <li>Comunity Center</li>
-                     <li>Security System</li>
-                     </ul>
-                     <h4>Property Video</h4>
-                     {/* <iframe width="100%" height="480" src="https://www.youtube.com/embed/CegXQps0In4" frameborder="0" allowfullscreen></iframe>
+                        <div class="features_cols">
+                           <div class="info_icons">
+                                 <img src="https://content.harstatic.com/resources/images/listing_details/beds.png" alt='features-icons' />
+                                 <span>{details.rooms} Bed(s)</span>
+                           </div>
+                                    <div class="info_icons">
+                                 <img src="https://content.harstatic.com/resources/images/listing_details/baths.png" alt='features-icons' />
+                                 <span>{details.bathrooms} Full Bath(s)</span>
+                           </div>
+                                    <div class="info_icons">
+                                 <img src="https://content.harstatic.com/resources/images/listing_details/built.png" alt='features-icons' />
+                                 <span>{details.sqft} Sqft. </span>
+                           </div>
+                                             <div class="info_icons">
+                                 <img src="https://content.harstatic.com/resources/images/listing_details/map.png" alt='features-icons' />
+                                 <span>15,633 Lot Sqft.</span>
+                           </div>
+                                    <div class="info_icons">
+                                 <img src="https://content.harstatic.com/resources/images/listing_details/single_family.png" alt='features-icons' />
+                                 <span></span>
+                           </div>
+                           <div class="clearfix"></div>
+
+                        </div>
+                        </div>
                      <h4>Property Map</h4>
-                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6851.201919469417!2d-86.11773906635584!3d33.47324776828677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888bdb60cc49c571%3A0x40451ca6baf275c7!2s36008+AL-77%2C+Talladega%2C+AL+35160%2C+USA!5e0!3m2!1sbn!2sbd!4v1460452919256" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> */}
+                     <Map address={details.address} lat={details.lat} lng={details.lng} />
                   </div>
                
-                  {/* {/* <div className="aa-properties-social">
+                  <div className="aa-properties-social">
                      <ul>
                      <li>Share</li>
                      <li><a href="#"><i className="fa fa-facebook"></i></a></li>
@@ -74,8 +102,7 @@ function PropertyDetails() {
                      <li><a href="#"><i className="fa fa-google-plus"></i></a></li>
                      <li><a href="#"><i className="fa fa-pinterest"></i></a></li>
                      </ul>
-                  </div> */}
-                */}
+                  </div>
                   
 
                   </div>           

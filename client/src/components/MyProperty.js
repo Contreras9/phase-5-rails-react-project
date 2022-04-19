@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import Header from './Header';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
@@ -47,7 +46,6 @@ function MyProperties() {
 
    return (
       <>
-      <Header />
       <Navbar />
       <section id="aa-property-header">
          <div className="container">
@@ -116,7 +114,7 @@ function MyProperties() {
         </table>
         <div className='action'>
       <form>
-        <Link to='/mypropertiesform'><input type="submit" value={"new"} className='btn btn-success' /></Link>
+        <Link to='/mypropertiesform'><input type="submit" value={"new"} className='btn btn-success'/></Link>
       </form>
       </div>
         </main>

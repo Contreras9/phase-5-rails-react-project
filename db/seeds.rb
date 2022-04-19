@@ -70,10 +70,15 @@ accountJ = Account.create(first_name: "John", last_name: "Doe", email: "john@exa
 
 houses.each { |house| 
 
+   begin
    if (house.key?("house_details"))
+      # puts house["zpid"]
       address = house["house_details"]["address"]["zipcode"]
       puts address
-      Property.create(account_id: accountJ.id, address: house["zipcode"], price: house["price"], rooms: house["beds"], bathrooms: house["baths"], photo: house["imgSrc"], sqft: house["area"], zipcode: house["hdpData"]["homeInfo"]["zipcode"], city: house["hdpData"]["homeInfo"]["city"], property_type: (house["statusType"] == "FOR_SALE" ? 1 : 2)) 
+      Property.create(account_id: accountJ.id, address: house["house_details"]["address"]["streetAddress"], price: house["price"], rooms: house["beds"], bathrooms: house["baths"], photo: house["imgSrc"], sqft: house["area"], zipcode: house["hdpData"]["homeInfo"]["zipcode"], city: house["hdpData"]["homeInfo"]["city"], property_type: (house["statusType"] == "FOR_SALE" ? 1 : 2), lat: house["latLong"]["latitude"], lng: house["latLong"]["longitude"]) 
+   end
+   rescue
+      puts "invalid house found"
    end
 
 }

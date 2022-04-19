@@ -11,6 +11,8 @@ class CreateProperties < ActiveRecord::Migration[6.1]
       t.integer :sqft
       t.string :zipcode
       t.string :city
+      t.decimal :lat
+      t.decimal :lng
 
       t.timestamps
     end

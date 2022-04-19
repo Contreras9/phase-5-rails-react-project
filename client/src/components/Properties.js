@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Footer from './Footer';
-import Header from './Header';
 import Navbar from './Navbar';
 
 
@@ -9,9 +8,35 @@ function Properties() {
 
    const [location, setLocation] = useState('')
    const [propertyResults, setPropertyResults] = useState([])
+   const [sortCondition, setSortCondition] = useState(1)
+   const [numOfHomesPerPage,setNumOfHomesPerPage] = useState(5)
+   const [pageToShow,setPageToShow] = useState(0)
    let {locationSearch, propertyTypeParam} = useParams()
 
    const propertyType = propertyTypeParam ? propertyTypeParam : 0;
+
+   function sortedHomes() {
+
+      switch(sortCondition) {
+         case "1": 
+            return [...propertyResults].sort((a , b) => parseInt(a.price.replaceAll("$","").replaceAll(",","")) < parseInt(b.price.replaceAll("$","").replaceAll(",","")) ? 1 : -1)
+         
+         case "2":
+            return [...propertyResults].sort((a , b) => parseInt(a.price.replaceAll("$","").replaceAll(",","")) > parseInt(b.price.replaceAll("$","").replaceAll(",","")) ? 1 : -1)
+        
+            default: return propertyResults
+      }
+   }
+
+   function paginateHomes(homes)
+   {
+      const chunks = []
+      for (let i = 0 ; i < homes.length ; i += numOfHomesPerPage)
+      {
+         chunks.push(homes.slice(i,i+numOfHomesPerPage))
+      }
+      return chunks.length === 0 ? [[]] : chunks
+   }
 
    function searchQuiry(location) {
 
@@ -34,17 +59,19 @@ function Properties() {
    }
 
    useEffect(() => {
+      let q = ""
       if (locationSearch) {
          setLocation(locationSearch)
-         searchQuiry(locationSearch)
+         q = locationSearch
       } 
+      searchQuiry(q)
    }, [])
 
 
 
    return (
       <>
-      <Header />
+
       <Navbar />
       <section id="aa-property-header">
          <div className="container">
@@ -72,36 +99,34 @@ function Properties() {
                   <div className="aa-properties-content-head-left">
                      <form action="" className="aa-sort-form">
                         <label for="">Sort by</label>
-                        <select name="">
+                        <select name="" onChange={(e) => setSortCondition(e.target.value)}>
                         <option value="1" selected="Default">Default</option>
-                        <option value="2">Name</option>
-                        <option value="3">Price</option>
-                        <option value="4">Date</option>
+                        <option value="2">Price</option>
+                        
+                        <option value="3">City</option>
                         </select>
                      </form>
                      <form action="" className="aa-show-form">
                         <label for="">Show</label>
-                        <select name="">
-                        <option value="1" selected="12">6</option>
-                        <option value="2">12</option>
-                        <option value="3">24</option>
+                        <select name="" onChange={e =>  setNumOfHomesPerPage(parseInt(e.target.value))}>
+                        <option value="5" selected="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
                         </select>
                      </form>
                   </div>
                   <div className="aa-properties-content-head-right">
-                     <a id="aa-grid-properties" href="#"><span className="fa fa-th"></span></a>
-                     <a id="aa-list-properties" href="#"><span className="fa fa-list"></span></a>
                   </div>            
                   </div>
                   
                   <div className="aa-properties-content-body">
                   <ul className="aa-properties-nav">
                    
-                     { propertyResults.map(propertyResult => 
+                     { paginateHomes(sortedHomes())[pageToShow].map(propertyResult => 
                         <li>
                         <article className="aa-properties-item">
                         <a className="aa-properties-item-img" href="#">
-                           <Link to="/propertyDetails"><img alt="img" src={propertyResult.photo} /></Link>
+                           <Link to={`/propertyDetails/${propertyResult.id}`}><img alt="img" src={propertyResult.photo} /></Link>
                         </a>
                         <div className="aa-tag for-rent">
                            For Rent
@@ -114,14 +139,13 @@ function Properties() {
                               <span>- {propertyResult.name}</span>
                            </div>
                            <div className="aa-properties-about">
-                              <h3><Link to="/propertyDetails">{propertyResult.price}</Link></h3>
+                              <h3><Link to={`/propertyDetails/${propertyResult.id}`}>{propertyResult.price}</Link></h3>
                               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
                            </div>
                            <div className="aa-properties-detial">
                               <span className="aa-price">
-                              address
                               </span>
-                              <Link className="aa-secondary-btn" to="/propertyDetails">View Details</Link>
+                              <Link className="aa-secondary-btn" to={`/propertyDetails/${propertyResult.id}`}>View Details</Link>
                            </div>
                         </div>
                         </article>
@@ -136,17 +160,15 @@ function Properties() {
                   <nav>
                      <ul className="pagination">
                         <li>
-                        <a href="#" aria-label="Previous">
+                        <a onClick={() => setPageToShow(p => 0 < p ? p-1 : p)} aria-label="Previous">
                            <span aria-hidden="true">&laquo;</span>
                         </a>
                         </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li className="active"><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+
+                        { Array.from(Array(Math.ceil(propertyResults.length / numOfHomesPerPage)) , (_,i) => i).map(i =>  <li className={ i === pageToShow ? "active" : ""} ><a onClick={() => setPageToShow(i)}>{i+1}</a></li>  )}
+                        
                         <li>
-                        <a href="#" aria-label="Next">
+                        <a onClick={() => setPageToShow(p => p < Math.ceil(propertyResults.length / numOfHomesPerPage)-1 ? p+1 : p) } aria-label="Next">
                            <span aria-hidden="true">&raquo;</span>
                         </a>
                         </li>
@@ -163,7 +185,7 @@ function Properties() {
                   <h3>Search {["All","for Sale","for Rent"][propertyType]}</h3>
                   <form action="">
                      <div className="aa-single-advance-search">
-                        <input type="text" placeholder="Type Your Location" value={location} onChange={e => {setLocation(e.target.value)}}/>
+                        <input type="text" placeholder="Type Your City/Zipcode" value={location} onChange={e => {setLocation(e.target.value)}}/>
                      </div>
                      <div className="aa-single-advance-search">
                         <select id="" name="">
@@ -174,20 +196,19 @@ function Properties() {
                      </div>
                      <div className="aa-single-advance-search">
                         <select id="" name="">
-                        <option selected="" value="0">Type</option>
-                        <option value="1">Flat</option>
-                        <option value="2">Land</option>
-                        <option value="3">Plot</option>
-                        <option value="4">Commercial</option>
+                        <option selected="" value="0">Rooms</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                         </select>
                      </div>
                      <div className="aa-single-advance-search">
                         <select id="" name="">
-                        <option selected="" value="0">Type</option>
-                        <option value="1">Flat</option>
-                        <option value="2">Land</option>
-                        <option value="3">Plot</option>
-                        <option value="4">Commercial</option>
+                        <option selected="" value="0">Bathrooms</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                         </select>
                      </div>
                      <div className="aa-single-filter-search">

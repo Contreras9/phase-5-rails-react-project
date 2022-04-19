@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Main from './components/Main';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -10,14 +10,34 @@ import Sidebar from './components/Sidebar';
 import MyProperty from './components/MyProperty'
 import MyPropertiesForm from './components/MyPropertiesForm';
 import './App.css'
+import Header from './components/Header';
+import Navbar from './components/Navbar';
+import Map from './components/Map';
 
 
 
 function App() {
   const [account, setAccount] = useState(null)
 
+  useEffect(() => {
+    fetch("http://localhost:4001/authorized_account", {
+       method:"GET",
+       headers: {
+          "Content-Type": "application/json"
+       }
+    })
+    .then(res => res.json())
+    .then(res => {
+       setAccount(res)
+    })
+ }, [])
+
+
+
   return (
     <div>
+      <Header account={account} setAccount={setAccount} />
+      <Navbar />
       <Routes>
         <Route path="/login" element={
           <Login setAccount={setAccount} />
@@ -29,13 +49,13 @@ function App() {
           <Main account={account} setAccount={setAccount} />
         } />
         <Route path="/properties/:propertyTypeParam/:locationSearch" element={
-          <Properties/>
+          <Properties account={account} setAccount={setAccount} />
         } />
         <Route path="/properties/:propertyTypeParam" element={
-          <Properties/>
+          <Properties account={account} setAccount={setAccount} />
         } />
         <Route path="/properties" element={
-          <Properties/>
+          <Properties account={account} setAccount={setAccount} />
         } />
         {/* <Route path="/homes4sale" element={
           <Properties propertyType={1}/>
@@ -43,8 +63,8 @@ function App() {
         <Route path="/homes4rent" element={
           <Properties propertyType={2}/>
         } /> */}
-        <Route path="/propertyDetails" element={
-            <PropertyDetails />
+        <Route path="/propertyDetails/:id" element={
+            <PropertyDetails account={account} setAccount={setAccount} />
           } /> 
         <Route path="/dashboard" element={
             <Dashboard />

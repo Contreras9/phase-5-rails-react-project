@@ -1,9 +1,14 @@
 class PropertiesController < ApplicationController
-   before_action :authorized_account, only: [:my_properties, :create, :update, :destroy]
-   skip_before_action :authorized_account, only: [:search]
+   before_action :authorized_account, only: [:my_properties, :update, :destroy]
+   skip_before_action :authorized_account, only: [:show, :search, :create]
 
    def index
       render json: Property.all, status: :ok
+   end
+
+   def show
+      property = Property.find(params[:id])
+      render json: property, status: :ok
    end
 
    def my_properties
@@ -17,10 +22,8 @@ class PropertiesController < ApplicationController
    end
 
    def create
-      properties = Property.create!(property_params)
-      property.account_id = session[:id]
-      property.save
-      render json: properties, status: :created
+      property = Property.create!(property_params.merge({account_id: session[:id]}))
+      render json: property, status: :created
    end
 
    def destroy
@@ -35,7 +38,7 @@ class PropertiesController < ApplicationController
    private
 
    def property_params
-      params.permit(:property_type, :address, :price, :rooms, :bathrooms, :photo, :sqft, :zipcode, :city)
+      params.permit(:property_type, :property, :address, :price, :rooms, :bathrooms, :photo, :sqft, :zipcode, :city)
    end
 
 

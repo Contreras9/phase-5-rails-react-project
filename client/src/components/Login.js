@@ -27,7 +27,7 @@ function Login( {setAccount} ) {
               res.json()
               .then(user=>{
                 setAccount(user)
-                navigate("/dashboard");
+                navigate("/");
               })
             } else {
               res.json()
