@@ -27,7 +27,7 @@ function PropertyDetails() {
 
    return (
       <>
-      <Navbar />
+      
       
        <section id="aa-property-header">
          <div className="container">
@@ -49,7 +49,6 @@ function PropertyDetails() {
 
       <section id="aa-properties">
          <div className="container">
-            <div className="row">
             <div className="col-md-8">
                <div className="aa-properties-content">            
          
@@ -61,38 +60,55 @@ function PropertyDetails() {
                   </div>
                   <div className="aa-properties-info">
                      <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, alias!</h2>
-                     <span className="aa-price">{8}</span>
+                     <span className="aa-price">{details.price}</span>
                      <div class="dp_form">
-
-                     <h4>Propery Features</h4>
-                        <div class="features_cols">
-                           <div class="info_icons">
-                                 <img src="https://content.harstatic.com/resources/images/listing_details/beds.png" alt='features-icons' />
-                                 <span>{details.rooms} Bed(s)</span>
-                           </div>
+                        <h4>Propery Features</h4>
+                        <div className='section_content' style={{display:"block"}}>
+                              <div class="dp_form">
+                                 <div class="features_cols">
                                     <div class="info_icons">
-                                 <img src="https://content.harstatic.com/resources/images/listing_details/baths.png" alt='features-icons' />
-                                 <span>{details.bathrooms} Full Bath(s)</span>
-                           </div>
-                                    <div class="info_icons">
-                                 <img src="https://content.harstatic.com/resources/images/listing_details/built.png" alt='features-icons' />
-                                 <span>{details.sqft} Sqft. </span>
-                           </div>
+                                          <img src="https://content.harstatic.com/resources/images/listing_details/beds.png" />
+                                          <span>{details.rooms} Bed(s)</span>
+                                    </div>
                                              <div class="info_icons">
-                                 <img src="https://content.harstatic.com/resources/images/listing_details/map.png" alt='features-icons' />
-                                 <span>15,633 Lot Sqft.</span>
-                           </div>
-                                    <div class="info_icons">
-                                 <img src="https://content.harstatic.com/resources/images/listing_details/single_family.png" alt='features-icons' />
-                                 <span></span>
-                           </div>
-                           <div class="clearfix"></div>
+                                          <img src="https://content.harstatic.com/resources/images/listing_details/baths.png" />
+                                          <span>{details.bathrooms} Full Bath(s)</span>
+                                    </div>
+                                             <div class="info_icons">
+                                          <img src="https://content.harstatic.com/resources/images/listing_details/built.png" />
+                                          <span>{details.sqft} Bldg Sqft. </span>
+                                    </div>
+                                                      <div class="info_icons">
+                                          <img src="https://content.harstatic.com/resources/images/listing_details/map.png" />
+                                          <span>15,633 Lot Sqft.</span>
+                                    </div>
+                                             <div class="info_icons">
+                                          <img src="https://content.harstatic.com/resources/images/listing_details/single_family.png" />
+                                          <span>{details.home_type}</span>
+                                    </div>
+                                             <div class="info_icons">
+                                          <img src="https://content.harstatic.com/img/icons/dom60.png" />
+                                          <span style={{fontWeight: "normal !important", fontSize: "14px"}}> <b style={{fontSize: "16px"}}>{details.time_on_zillow}</b> Day(s) on the market</span>
+                                    </div>
+                                    <div class="clearfix"></div>
 
-                        </div>
-                        </div>
-                     <h4>Property Map</h4>
+                                 </div>
+                              </div>
+                           <div>
+                           <i data-feather="circle"></i>
+                              <div>{details.rooms} bedrooms</div>
+                              <div></div>
+                           </div>
+                           
+                          
+                        </div>            
+                     </div>
+              
+                     <h3>Property Map</h3>
                      <Map address={details.address} lat={details.lat} lng={details.lng} />
                   </div>
+
+                  {details.detail_url}
                
                   <div className="aa-properties-social">
                      <ul>
@@ -209,7 +225,6 @@ function PropertyDetails() {
                   </div>
                   </div>
                </aside>
-            </div>
             </div>
          </div>
       </section>

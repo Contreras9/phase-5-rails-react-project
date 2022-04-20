@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_04_10_192556) do
   create_table "properties", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.integer "property_type"
+    t.string "property_status"
     t.string "address"
     t.string "price"
     t.integer "rooms"
@@ -45,8 +46,13 @@ ActiveRecord::Schema.define(version: 2022_04_10_192556) do
     t.integer "sqft"
     t.string "zipcode"
     t.string "city"
+    t.string "state"
+    t.string "home_type"
+    t.string "home_status"
     t.decimal "lat"
     t.decimal "lng"
+    t.string "detail_url"
+    t.string "time_on_zillow"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_properties_on_account_id"

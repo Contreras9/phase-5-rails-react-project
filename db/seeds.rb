@@ -75,7 +75,7 @@ houses.each { |house|
       # puts house["zpid"]
       address = house["house_details"]["address"]["zipcode"]
       puts address
-      Property.create(account_id: accountJ.id, address: house["house_details"]["address"]["streetAddress"], price: house["price"], rooms: house["beds"], bathrooms: house["baths"], photo: house["imgSrc"], sqft: house["area"], zipcode: house["hdpData"]["homeInfo"]["zipcode"], city: house["hdpData"]["homeInfo"]["city"], property_type: (house["statusType"] == "FOR_SALE" ? 1 : 2), lat: house["latLong"]["latitude"], lng: house["latLong"]["longitude"]) 
+      Property.create(account_id: accountJ.id, address: house["house_details"]["address"]["streetAddress"], price: house["price"], rooms: house["beds"], bathrooms: house["baths"], photo: house["imgSrc"], sqft: house["area"], zipcode: house["hdpData"]["homeInfo"]["zipcode"], city: house["hdpData"]["homeInfo"]["city"], state: house["hdpData"]["homeInfo"]["state"], home_type: house["hdpData"]["homeInfo"]["homeType"], home_status: house["hdpData"]["homeInfo"]["homeStatus"], property_status: house["statusText"], property_type: (house["statusType"] == "FOR_SALE" ? 1 : 2), lat: house["latLong"]["latitude"], lng: house["latLong"]["longitude"], detail_url: house["detailUrl"], time_on_zillow: house[":timeOnZillow"]) 
    end
    rescue
       puts "invalid house found"

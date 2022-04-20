@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 
 
-function Navbar() {
+function Navbar( {account} ) {
    return(
 	
 	<>
@@ -42,9 +42,12 @@ function Navbar() {
 						<li><a href="blog-single.html">BLOG DETAILS</a></li>                                            
 					</ul>
 					</li>
+					{account ? 
 					<li>
 						<Link to="/dashboard">DASHBOARD</Link>
-					</li>                                  
+					</li>
+					:
+					''}                            
 				</ul>                            
 			</div>      
 			</div>          

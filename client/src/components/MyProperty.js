@@ -10,6 +10,7 @@ function MyProperties() {
    
 
    function updateMyProperty() {
+      console.log("word")
       fetch("http://localhost:4001/myproperties", {
          method: 'GET',
          headers: {'Content-Type': 'application/json'}
@@ -46,7 +47,7 @@ function MyProperties() {
 
    return (
       <>
-      <Navbar />
+      
       <section id="aa-property-header">
          <div className="container">
             <div className="row">
@@ -82,7 +83,6 @@ function MyProperties() {
                <th>Sqft</th>
                <th>Zipcode</th>
                <th>City</th>
-               <th>Photo</th>
                <th colSpan={3}></th>
             </tr>
           </thead>
@@ -91,14 +91,13 @@ function MyProperties() {
              {myProperties.map(myProperty => 
             <tr>
               <td>{myProperty.property_type === 1 ? "For Sale" : "For Rent"}</td>
-              <td>address</td>
-              <td>price</td>
-              <td>rooms</td>
-              <td>bathrooms</td>
-              <td>sqft</td>
-              <td>Zipcode</td>
-              <td>city</td>
-              <td>photo</td>
+              <td>{myProperty.address}</td>
+              <td>{myProperty.price}</td>
+              <td>{myProperty.rooms}</td>
+              <td>{myProperty.bathrooms}</td>
+              <td>{myProperty.sqft}</td>
+              <td>{myProperty.zipcode}</td>
+              <td>{myProperty.city}</td>
               <td>
               <span onClick={() => showProperty(myProperty.id)}>Show</span>
               </td>

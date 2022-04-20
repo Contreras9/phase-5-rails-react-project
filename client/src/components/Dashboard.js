@@ -8,7 +8,7 @@ function Dashboard() {
 
    return (
       <>
-       <Navbar />
+       
          <section id="aa-property-header">
             <div className="container">
                <div className="row">

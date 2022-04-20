@@ -397,7 +397,7 @@ img {
   }
 }
 
-@-webkit-keyframes pulse-inner {
+/* @-webkit-keyframes pulse-inner {
   0% {
     -webkit-transform: scale(0);
     opacity: 0;
@@ -445,7 +445,7 @@ img {
     opacity: 1;
     filter: alpha(opacity=100);
   }
-}
+} */
 
 /*==================
 	SLIDER SECTION
@@ -534,7 +534,7 @@ img {
   margin-top: 10px;
   font-weight: bold;
 }
-#aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-price {
+/* #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-price {
   font-family: "Poppins", sans-serif;
   font-size: 30px;
   font-weight: bold;
@@ -550,7 +550,7 @@ img {
   transition: all 0.5s;
   text-transform: uppercase;
   font-size: 15px;
-}
+} */
 #aa-slider .aa-slider-area .aa-top-slider .aa-top-slider-single .aa-top-slider-content .aa-top-slider-btn span {
   margin-left: 3px;
 }
@@ -2507,6 +2507,7 @@ img {
   padding: 50px;
   float: left;
   width: 100%;
+  margin-top: 100px;
 }
 #aa-signin .aa-signin-area .aa-signin-form .aa-signin-form-title {
   display: inline;

@@ -72,7 +72,7 @@ function Properties() {
    return (
       <>
 
-      <Navbar />
+      
       <section id="aa-property-header">
          <div className="container">
             <div className="row">
@@ -129,18 +129,21 @@ function Properties() {
                            <Link to={`/propertyDetails/${propertyResult.id}`}><img alt="img" src={propertyResult.photo} /></Link>
                         </a>
                         <div className="aa-tag for-rent">
-                           For Rent
+                        {propertyResult.home_status}
                         </div>
                         <div className="aa-properties-item-content">
                            <div className="aa-properties-info">
-                              <span>{propertyResult.rooms} rooms</span>
-                              <span>{propertyResult.bathrooms} bathrooms</span>
-                              <span>{propertyResult.sqft} sqft</span>
-                              <span>- {propertyResult.name}</span>
+                           <span>{propertyResult.rooms} rooms</span>
+                           <span>{propertyResult.bathrooms} bath(s)</span>
+                           <span>{propertyResult.sqft} sqft</span>-
+                           <span>{propertyResult.property_status}</span>
                            </div>
                            <div className="aa-properties-about">
                               <h3><Link to={`/propertyDetails/${propertyResult.id}`}>{propertyResult.price}</Link></h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                              <span>{propertyResult.address}</span>,
+                              <span> {propertyResult.city}</span>,
+                              <span> {propertyResult.state}</span>
+                              <span> {propertyResult.zipcode}</span>                     
                            </div>
                            <div className="aa-properties-detial">
                               <span className="aa-price">

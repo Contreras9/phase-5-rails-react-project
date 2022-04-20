@@ -74,7 +74,7 @@ function Search() {
                 <span id="skip-value-upper" className="example-val">7500.00</span>
                
                    
-                  <Nouislider range={{ min: 0, max: 100 }} start={[20, 70]} connect />
+                  <Nouislider range={{ min: 0, max: 100 }} start={[150, 300]} connect />
                
               </div>
             </div>

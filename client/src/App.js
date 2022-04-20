@@ -12,7 +12,6 @@ import MyPropertiesForm from './components/MyPropertiesForm';
 import './App.css'
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import Map from './components/Map';
 
 
 
@@ -37,7 +36,7 @@ function App() {
   return (
     <div>
       <Header account={account} setAccount={setAccount} />
-      <Navbar />
+      <Navbar account={account}/>
       <Routes>
         <Route path="/login" element={
           <Login setAccount={setAccount} />

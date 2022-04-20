@@ -34,7 +34,7 @@ function PropertyList() {
             <div className="aa-title">
                <h2>Latest Properties</h2>
                <span></span>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus.</p>         
+                   
             </div>
             <div className="aa-latest-properties-content">
                
@@ -43,25 +43,28 @@ function PropertyList() {
                   <div className="col-md-4">
                   <article className="aa-properties-item">
                      <a href="#" className="aa-properties-item-img">
-                        <img src="img/item/1.jpg" alt="img"/>
+                        <img src={house.photo} />
                      </a>
                      <div className="aa-tag for-sale">
-                        For Sale
+                        {house.home_status}
                      </div>
                      <div className="aa-properties-item-content">
                         <div className="aa-properties-info">
-                        <span>5 Rooms</span>
-                        <span>2 Beds</span>
-                        <span>3 Baths</span>
-                        <span>1100 SQ FT</span>
+                        <span>{house.rooms} rooms</span>
+                        <span>{house.bathrooms} bath(s)</span>
+                        <span>{house.sqft} sqft</span>-
+                        <span>{house.property_status}</span>
                         </div>
                         <div className="aa-properties-about">
-                        <h3><a href="#">Appartment Title</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                        <h3>{house.price}</h3>
+                        <span>{house.address}</span>,
+                        <span> {house.city}</span>,
+                        <span> {house.state}</span>
+                        <span> {house.zipcode}</span>
+
                         </div>
                         <div className="aa-properties-detial">
                         <span className="aa-price">
-                           $35000
                         </span>
                         <a href="#" className="aa-secondary-btn">View Details</a>
                         </div>
