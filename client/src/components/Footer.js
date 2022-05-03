@@ -11,7 +11,7 @@ function Footer() {
                   <div className="row">
                   <div className="col-md-5">
                      <div className="aa-about-us-left">
-                        <img src="img/about-us.png" alt="image" />
+                        <img src="/img/about-us.png" alt="image" />
                      </div>
                   </div>
                   <div className="col-md-7">
@@ -24,7 +24,7 @@ function Footer() {
                         <p>It was a great project to test and showcase the skills that I have learned during my 15 weeks at Flatiron School.</p>
                         <p>This application uses Ruby on Rails to manage the back-end and React to power the front-end.</p>      
                         <p>The API that was used for this project, was from Zillow.com, a well-known real-estate website.</p>
-                        <p>It's data was scrape using the console's network to aquire certain data, Postman for locating end-points and for testing.</p>
+                        <p>The data was scraped by reverse engineering the api end-points in Postman and fetching the data by sending web request in ruby</p>
                      </div>
                   </div>
                   </div>

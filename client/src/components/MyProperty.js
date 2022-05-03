@@ -83,6 +83,7 @@ function MyProperties() {
                <th>Sqft</th>
                <th>Zipcode</th>
                <th>City</th>
+               <th>State</th>
                <th colSpan={3}></th>
             </tr>
           </thead>
@@ -98,6 +99,7 @@ function MyProperties() {
               <td>{myProperty.sqft}</td>
               <td>{myProperty.zipcode}</td>
               <td>{myProperty.city}</td>
+              <td>{myProperty.state}</td>
               <td>
               <span onClick={() => showProperty(myProperty.id)}>Show</span>
               </td>

@@ -24,7 +24,7 @@ function Service() {
                         </div>
                         <div className="aa-single-service-content">
                            <h4><Link to="/properties/1/">Property Sale</Link></h4>
-                           <p>kjvwjbvbjkvbrjkvjbkv</p>
+                           <p>Find the right Home for you.</p>
                         </div>
                         </div>
                      </div>
@@ -35,7 +35,7 @@ function Service() {
                         </div>
                         <div className="aa-single-service-content">
                            <h4><Link to="/properties/2/">Property Rent</Link></h4>
-                           <p>ohkjcdjdbvkjwvjb.</p>
+                           <p>Thousands of options to choose from.</p>
                         </div>
                         </div>
                      </div>
@@ -53,7 +53,7 @@ function Service() {
             <div className="col-md-12">
                <div className="aa-promo-banner-area">
                   <h3>Find Your Best Property</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, ex illum corporis quibusdam numquam quisquam optio explicabo. Officiis odit quia odio dignissimos eius repellat id!</p>
+                  <p></p>
                   <a href="/" className="aa-view-btn">View Details</a>
                </div>
             </div>

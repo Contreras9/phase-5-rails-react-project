@@ -9,7 +9,7 @@ function Agent() {
                   <div className="aa-title">
                   <h2>Our Agents</h2>
                   <span></span>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit ea nobis quae vero voluptatibus.</p>
+                  <p>Highly professionals, waiting to assist you find your dream home.</p>
                   </div>
                   
                   <div className="aa-agents-content">

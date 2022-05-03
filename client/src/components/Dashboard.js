@@ -38,41 +38,26 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="3104" height="1310" style={{display: "block", height: "655px", width: "1552px"}}></canvas> */}
+      <img width="200px" height="200px" style={{display: "block", height: "655px", "background-size": "cover" , width: "1552px"}} src='/img/download.png' />
 
+      {/* <img src='/img/download.png'/> */}
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
+               <th>Property Type</th>
+               <th>Address</th>
+               <th>Price</th>
+               <th>Rooms</th>
+               <th>Bathrooms</th>
+               <th>Sqft</th>
+               <th>Zipcode</th>
+               <th>City</th>
+               <th colSpan={3}></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
-              <td>dolor</td>
-              <td>sit</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>adipiscing</td>
-              <td>elit</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>Integer</td>
-              <td>nec</td>
-              <td>odio</td>
-              <td>Praesent</td>
-            </tr>
+            
           </tbody>
         </table>
       </div>

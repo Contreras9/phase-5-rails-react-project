@@ -6,7 +6,7 @@ function Login( {setAccount} ) {
    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const [error, setError] = useState(null)
+    const [error, setError] = useState("")
 
     let navigate = useNavigate();
 
@@ -61,11 +61,15 @@ function Login( {setAccount} ) {
                 <div className="aa-single-field">
                 <label>
                   <input type="checkbox" /> Remember me
-                </label>                                                          
+                </label>
+                <br />
+                <label>
+                  <span style={{color: "red"}}>{error}</span> 
+                </label>                                        
                 </div> 
                 <div className="aa-single-submit">
                   <input type="submit" value="Submit" onClick={onClick} className="aa-browse-btn" name="submit" />  
-                  <p>Don't Have A Account Yet? <Link to="signup">CREATE NOW!</Link></p>
+                  <p>Don't Have A Account Yet? <Link to="/signup">CREATE NOW!</Link></p>
                 </div>
               </form>
             </div>

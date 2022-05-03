@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
 
 
 function PropertyList() {
@@ -42,9 +43,9 @@ function PropertyList() {
                {propertyResults.map(house => 
                   <div className="col-md-4">
                   <article className="aa-properties-item">
-                     <a href="#" className="aa-properties-item-img">
-                        <img src={house.photo} />
-                     </a>
+                     <Link to={`/propertyDetails/${house.id}`} className="aa-properties-item-img">
+                        <img src={house.photo} alt="houses" />
+                     </Link>
                      <div className="aa-tag for-sale">
                         {house.home_status}
                      </div>

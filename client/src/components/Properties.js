@@ -78,10 +78,10 @@ function Properties() {
             <div className="row">
             <div className="col-md-12">
                <div className="aa-property-header-inner">
-                  <h2>Properties Page</h2>
+                  {/* <h2>Properties Page</h2> */}
                   <ol className="breadcrumb">
-                  <li><a href="/">HOME</a></li>            
-                  <li className="active">PROPERTIES</li>
+                  {/* <li><a href="/">HOME</a></li>             */}
+                  {/* <li className="active">PROPERTIES</li> */}
                </ol>
                </div>
             </div>
@@ -101,7 +101,7 @@ function Properties() {
                         <label for="">Sort by</label>
                         <select name="" onChange={(e) => setSortCondition(e.target.value)}>
                         <option value="1" selected="Default">Default</option>
-                        <option value="2">Price</option>
+                        <option value="2">Price (ascending)</option>
                         
                         <option value="3">City</option>
                         </select>
@@ -194,7 +194,7 @@ function Properties() {
                         <select id="" name="">
                         <option selected="" value="0">Category</option>
                         <option value="1">Buy</option>
-                        <option value="2">Sale</option>
+                        <option value="2">Rent</option>
                         </select>
                      </div>
                      <div className="aa-single-advance-search">

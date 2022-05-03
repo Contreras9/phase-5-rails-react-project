@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Navbar from './Navbar';
 import Footer from './Footer'
 import Map from './Map'
 import { useParams } from 'react-router-dom';
@@ -54,9 +53,7 @@ function PropertyDetails() {
          
                   <div className="aa-properties-details">
                   <div className="aa-properties-details-img">
-                     <img src="img/slider/1.jpg" alt="img" />
-                     <img src="img/slider/2.jpg" alt="img" />
-                     <img src="img/slider/3.jpg" alt="img" />
+                     <img src={details.photo}/>
                   </div>
                   <div className="aa-properties-info">
                      <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, alias!</h2>
@@ -78,28 +75,14 @@ function PropertyDetails() {
                                           <img src="https://content.harstatic.com/resources/images/listing_details/built.png" />
                                           <span>{details.sqft} Bldg Sqft. </span>
                                     </div>
-                                                      <div class="info_icons">
-                                          <img src="https://content.harstatic.com/resources/images/listing_details/map.png" />
-                                          <span>15,633 Lot Sqft.</span>
-                                    </div>
                                              <div class="info_icons">
                                           <img src="https://content.harstatic.com/resources/images/listing_details/single_family.png" />
                                           <span>{details.home_type}</span>
-                                    </div>
-                                             <div class="info_icons">
-                                          <img src="https://content.harstatic.com/img/icons/dom60.png" />
-                                          <span style={{fontWeight: "normal !important", fontSize: "14px"}}> <b style={{fontSize: "16px"}}>{details.time_on_zillow}</b> Day(s) on the market</span>
                                     </div>
                                     <div class="clearfix"></div>
 
                                  </div>
                               </div>
-                           <div>
-                           <i data-feather="circle"></i>
-                              <div>{details.rooms} bedrooms</div>
-                              <div></div>
-                           </div>
-                           
                           
                         </div>            
                      </div>
@@ -107,8 +90,6 @@ function PropertyDetails() {
                      <h3>Property Map</h3>
                      <Map address={details.address} lat={details.lat} lng={details.lng} />
                   </div>
-
-                  {details.detail_url}
                
                   <div className="aa-properties-social">
                      <ul>
@@ -137,28 +118,25 @@ function PropertyDetails() {
                      <div className="aa-single-advance-search">
                         <select id="" name="">
                         <option selected="" value="0">Category</option>
-                        <option value="1">Flat</option>
-                        <option value="2">Land</option>
-                        <option value="3">Plot</option>
-                        <option value="4">Commercial</option>
+                        <option value="1">Buy</option>
+                        <option value="2">Sale</option>
                         </select>
                      </div>
                      <div className="aa-single-advance-search">
                         <select id="" name="">
-                        <option selected="" value="0">Type</option>
-                        <option value="1">Flat</option>
-                        <option value="2">Land</option>
-                        <option value="3">Plot</option>
-                        <option value="4">Commercial</option>
+                        <option selected="" value="0">Rooms</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                         </select>
                      </div>
                      <div className="aa-single-advance-search">
                         <select id="" name="">
-                        <option selected="" value="0">Type</option>
-                        <option value="1">Flat</option>
-                        <option value="2">Land</option>
-                        <option value="3">Plot</option>
-                        <option value="4">Commercial</option>
+                        <option selected="" value="0">Bathrooms</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                         </select>
                      </div>
                      <div className="aa-single-filter-search">
@@ -168,6 +146,14 @@ function PropertyDetails() {
                         <span>TO</span>
                         <span id="skip-value-upper" className="example-val">100.00</span>
                         <div id="aa-sqrfeet-range" className="noUi-target noUi-ltr noUi-horizontal noUi-background">
+                        <div className='noUi-base'>
+                              <div className='noUi-origin noUi-connect' style={{left: '20%'}}>
+                                 <div className='noUi-handle noUi-handle-lower'></div>
+                              </div>
+                              <div className='noUi-origin noUi-background' style={{left: '70%'}}>
+                                 <div className='noUi-handle noUi-handle-upper'></div>
+                              </div>
+                           </div>
                         </div>                  
                      </div>
                      <div className="aa-single-filter-search">
@@ -177,6 +163,14 @@ function PropertyDetails() {
                         <span>TO</span>
                         <span id="skip-value-upper2" className="example-val">100.00</span>
                         <div id="aa-price-range" className="noUi-target noUi-ltr noUi-horizontal noUi-background">
+                        <div className='noUi-base'>
+                              <div className='noUi-origin noUi-connect' style={{left: '20%'}}>
+                                 <div className='noUi-handle noUi-handle-lower'></div>
+                              </div>
+                              <div className='noUi-origin noUi-background' style={{left: '70%'}}>
+                                 <div className='noUi-handle noUi-handle-upper'></div>
+                              </div>
+                           </div>
                         </div>      
                      </div>
                      <div className="aa-single-advance-search">
@@ -184,46 +178,6 @@ function PropertyDetails() {
                      </div>
                   </form>
                   </div> 
-               
-                  <div className="aa-properties-single-sidebar">
-                  <h3>Populer Properties</h3>
-                  <div className="media">
-                     <div className="media-left">
-                        <a href="#">
-                        <img className="media-object" src="img/item/1.jpg" alt="img" />
-                        </a>
-                     </div>
-                     <div className="media-body">
-                        <h4 className="media-heading"><a href="#">This is Title</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>                
-                        <span>$65000</span>
-                     </div>              
-                  </div>
-                  <div className="media">
-                     <div className="media-left">
-                        <a href="#">
-                        <img className="media-object" src="img/item/1.jpg" alt="img" />
-                        </a>
-                     </div>
-                     <div className="media-body">
-                        <h4 className="media-heading"><a href="#">This is Title</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>                
-                        <span>$65000</span>
-                     </div>              
-                  </div>
-                  <div className="media">
-                     <div className="media-left">
-                        <a href="#">
-                        <img className="media-object" src="img/item/1.jpg" alt="img" />
-                        </a>
-                     </div>
-                     <div className="media-body">
-                        <h4 className="media-heading"><a href="#">This is Title</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>                
-                        <span>$65000</span>
-                     </div>              
-                  </div>
-                  </div>
                </aside>
             </div>
          </div>

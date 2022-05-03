@@ -1,6 +1,21 @@
 import {Link} from 'react-router-dom';
 
 function Header( {account, setAccount} ) {
+
+   function signOut() {
+      fetch("http://localhost:4001/logout", {
+         method: "DELETE",
+         headers: { 'Content-Type': 'application/json'
+         }
+      })
+      .then(res => res.json())
+      .then(res => {
+         setAccount(null)
+      })
+   }
+
+
+
    return (
       <header id="aa-header">  
          <div className="container">
@@ -22,7 +37,7 @@ function Header( {account, setAccount} ) {
                   <div className="col-md-6 col-sm-6 col-xs-6">
                      <div className="aa-header-right">
                         {account ?
-                        <Link className="aa-login" to="/" onClick={() => setAccount(null)} >LOG OUT</Link>
+                        <Link className="aa-login" to="/" onClick={() => signOut()} >LOG OUT</Link>
                         :
                         <div>
                         <Link className="aa-register" to="/signup" >SIGN UP</Link>

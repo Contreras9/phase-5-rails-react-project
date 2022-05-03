@@ -15,6 +15,7 @@ function MyPropertiesForm() {
   const [sqft, setSqft] = useState('')
   const [zipcode, setZipcode] = useState('')
   const [city, setCity] = useState('')
+  const [state, setState] = useState('')
   const [photo, setPhoto] = useState('')
 
   let navigate = useNavigate()
@@ -174,7 +175,7 @@ function MyPropertiesForm() {
       </div>
  */}
 
-<div class="ui inverted segment">
+<div class="ui segment">
   <div class="ui  form">
     <div class="two fields">
       <div class="field">
@@ -224,8 +225,16 @@ function MyPropertiesForm() {
         <input placeholder="Property City" type="text" value={city} onChange={(e) => setCity(e.target.value)}/>
       </div>
 
+    </div>
+    <div class="two fields">
       <div class="field">
-        <label>Property City</label>
+        <label>Property State</label>
+        <input placeholder="Property Sqft" type="text"  value={state} onChange={(e) => setState(e.target.value)} />
+        {/* <input type="textField" name="name" className='form-control' value={propertyType} onChange={(e) => setPropertyType(e.target.value)} /> */}
+
+      </div>
+      <div class="field">
+        <label>Property Photo</label>
         <input type="file" placeholder="Profile Photo" onChange={(e) => uploadPhoto(e.target)}/>
       </div>
     </div>

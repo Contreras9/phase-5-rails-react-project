@@ -17,7 +17,7 @@ function Map( {address, lat, lng} ) {
       lat: parseFloat(lat),
       lng: parseFloat(lng),
    }
-   console.log()
+
 
    const zoomLevel = 15
    

@@ -20,7 +20,7 @@ function Navbar( {account} ) {
 				</button>
 				                                              
 			
-				<a className="navbar-brand aa-logo" href="/"> Villa <span>Property</span></a>
+				<Link className="navbar-brand aa-logo" to="/"> Villa <span>Property</span></Link>
 
 			</div>
 			<div id="navbar" className="navbar-collapse collapse">
@@ -32,11 +32,11 @@ function Navbar( {account} ) {
 					<li>
 						<Link to="/properties/2/">RENT</Link>
 					</li>
-					<li>
+					{/* <li>
 						<Link to="/signup">SELL</Link>
-					</li>
+					</li> */}
 					<li className="dropdown">
-					<a className="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">BLOG <span className="caret"></span></a>
+					<a className="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">News <span className="caret"></span></a>
 					<ul className="dropdown-menu" role="menu">                
 						<li><a href="blog-archive.html">BLOG</a></li>
 						<li><a href="blog-single.html">BLOG DETAILS</a></li>                                            

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :properties, only: [:create, :destroy]
   resources :accounts, only: [:create]
   post "/login", to: "sessions#login"
+  delete "/logout", to: "sessions#destroy"
   post "/search", to: "properties#search"
   get "/myproperties", to: "properties#my_properties"
   get "/authorized_account", to: "sessions#authorized"

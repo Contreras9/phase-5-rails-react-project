@@ -17,5 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
       session.delete :id
+      render json: {seccess: :ok}, status: :ok
   end
 end

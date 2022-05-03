@@ -27,6 +27,7 @@ function App() {
     })
     .then(res => res.json())
     .then(res => {
+      if (!("error" in res) ) 
        setAccount(res)
     })
  }, [])
